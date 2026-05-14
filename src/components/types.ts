@@ -11,5 +11,8 @@ export type CaseItem = {
   output: string;
   tools: string[];
   coverImage?: string;
+  coverFallbackClass?: string;
+  coverFit?: 'cover' | 'contain';
+  coverPosition?: string;
   visualType: 'research' | 'visual' | 'report' | 'ui' | 'seo';
 };
