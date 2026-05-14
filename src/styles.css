@@ -149,3 +149,30 @@
 .carousel-dots{display:flex;justify-content:center;gap:8px}
 .carousel-dot{width:8px;height:8px;border-radius:50%;border:0;background:#a9b3c04f;cursor:pointer;transition:all .25s ease}
 .carousel-dot.active{width:18px;border-radius:999px;background:#8b6942}
+
+/* Case gallery premium cover polish */
+.pills button{background:#fffaf4;border:1px solid #d9d0c3;color:#334152;transition:transform .28s ease,box-shadow .28s ease,background .28s ease,color .28s ease}
+.pills button:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(39,44,52,.1)}
+.pills .active{background:#2b3644;color:#fff;border-color:#2b3644;transform:none;box-shadow:0 10px 18px rgba(26,34,44,.24)}
+
+.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+.cover{height:clamp(360px,34vw,460px);border-radius:26px;box-shadow:0 8px 18px rgba(60,56,44,.08);transition:border-color .55s ease, box-shadow .55s ease, transform .55s ease}
+.cover:hover{box-shadow:0 24px 38px rgba(42,38,30,.22),0 0 0 1px #d8be93 inset}
+.cover-art,.cover-media{border-radius:26px}
+.cover-media{filter:saturate(.95) contrast(1.02)}
+
+.overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,12,18,.62) 0%,rgba(8,12,18,.28) 42%,rgba(8,12,18,.05) 75%,rgba(8,12,18,0) 100%);pointer-events:none}
+.overlay-content{padding:18px 20px 20px;text-shadow:0 2px 12px rgba(0,0,0,.28)}
+.case-index{position:absolute;left:16px;top:14px;padding:5px 9px;border-radius:999px;background:#ffffffe0;color:#2d3a49;border:1px solid #ffffffbc;font-size:.72rem;font-weight:700;letter-spacing:.08em}
+.case-tag{position:absolute;right:16px;top:14px;background:#ffffffdc;color:#2f3d4c;border-color:#ffffffd6}
+.case-status{position:absolute;right:16px;bottom:14px;padding:5px 10px;border-radius:999px;background:#ffffffe0;border:1px solid #ffffffbf;color:#304051;font-size:.72rem;font-weight:600}
+.case-meta{margin-top:auto;max-width:80%;display:flex;flex-direction:column;gap:8px}
+.overlay-content p{color:#f2ebe1}
+.overlay-content em{font-style:normal;color:#f8efe3;font-weight:600}
+.cover-unavailable{position:absolute;left:16px;bottom:16px;color:#2b3644;background:#ffffffe8;border:1px solid #ffffffc7;padding:5px 10px;border-radius:10px;font-size:.74rem;z-index:4}
+
+@media (max-width:900px){
+  .gallery{grid-template-columns:1fr}
+  .cover{height:clamp(320px,70vw,380px)}
+  .case-meta{max-width:92%}
+}
