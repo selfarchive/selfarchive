@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { useState } from 'react';
 import type { CaseItem } from './types';
 
 const hoverTransition = { duration: 0.58, ease: 'easeOut' as const };
@@ -25,10 +26,16 @@ function PreviewDetails({ id }: { id: string }) {
 }
 
 export function CaseCard({ item, onOpen }: { item: CaseItem; onOpen: (id: string) => void }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const showCover = Boolean(item.coverImage) && !imageFailed;
+
   return <motion.article className="case-card" whileHover="hover" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
     <motion.button className="cover" onClick={() => onOpen(item.id)} whileHover="hover" initial="rest" animate="rest">
       <motion.div className={`cover-art ${item.id}`} variants={{ rest: { scale: 1 }, hover: { scale: 1.08 } }} transition={hoverTransition}>
-        <PreviewDetails id={item.id} />
+        {showCover ? <>
+          {item.coverFit === 'contain' ? <img className="cover-media cover-media-blur" src={item.coverImage} alt="" aria-hidden style={{ objectPosition: item.coverPosition ?? 'center center' }} /> : null}
+          <img className={`cover-media ${item.coverFit === 'contain' ? 'cover-media-contain' : ''}`} src={item.coverImage} alt={`${item.title} cover`} onError={() => setImageFailed(true)} style={{ objectFit: item.coverFit ?? 'cover', objectPosition: item.coverPosition ?? 'center center' }} />
+        </> : <PreviewDetails id={item.id} />}
       </motion.div>
 
       <motion.div className="overlay" variants={{ rest: { opacity: 0.25 }, hover: { opacity: 0.86 } }} transition={hoverTransition} />
