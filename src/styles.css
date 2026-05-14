@@ -81,3 +81,49 @@
 .intro-panel-gallery .intro-panel-visuals{background:linear-gradient(145deg,#e9eef5,#efe5d6)}
 .home-intro-copy h1{text-shadow:0 0 22px rgba(244,238,226,.18)}
 .home-intro-actions{flex-direction:row;gap:10px}
+
+/* Refinement slider polish */
+.stage-label,.stage-words small,.prompt-chip,.poster span,.stage-markers span{user-select:none}
+.stage-label{font-size:.9rem;font-weight:600;letter-spacing:.02em}
+.slider-scene{height:490px;background:linear-gradient(150deg,#f9f5ee,#eef4fb)}
+.poster{inset:26px;padding:12px;border:none;transition:opacity .45s ease,filter .45s ease,transform .45s ease}
+.poster-image{object-fit:contain;border-radius:16px}
+.poster.before .poster-image{background:transparent}
+.poster.after .poster-image{box-shadow:0 16px 38px rgba(41,50,64,.16)}
+.poster-frame{width:100%;height:100%;padding:10px;border-radius:18px;border:1px solid #ced8e3;background:linear-gradient(160deg,#f7f4ee,#edf3fb)}
+.poster span{bottom:10px;left:10px;background:#f8efe1cc;backdrop-filter:blur(3px)}
+.image-error{z-index:8}
+
+.reconstruction-layer{position:absolute;inset:26px;border-radius:20px;pointer-events:none;transition:opacity .35s ease}
+.layout-grid{position:absolute;inset:24px;border-radius:14px;border:1px dashed #9db0c5a8;background-image:linear-gradient(to right,#9db0c522 1px,transparent 1px),linear-gradient(to bottom,#9db0c522 1px,transparent 1px);background-size:56px 56px}
+.focus-frame{position:absolute;left:34%;top:18%;width:34%;height:62%;border:1px solid #9ab0c680;border-radius:14px;box-shadow:0 0 0 1px #fff7 inset;background:linear-gradient(180deg,#ffffff1f,#a4bad51a)}
+.headline-block{position:absolute;left:11%;top:13%;width:44%;height:28px;border-radius:8px;background:#33496224;border:1px solid #8fa6be55}
+.layout-block{position:absolute;border-radius:10px;border:1px solid #8da4bc66;background:#f8fbff3a}
+.block-a{left:11%;top:24%;width:28%;height:30%}
+.block-b{left:11%;bottom:20%;width:36%;height:24%}
+.block-c{right:11%;top:24%;width:18%;height:34%}
+.annotation{position:absolute;height:1px;background:#8ea7c188}
+.a1{left:49%;top:26%;width:10%}.a2{left:49%;top:46%;width:8%}.a3{left:49%;top:66%;width:12%}
+.palette-dots{position:absolute;left:12%;bottom:14%;display:flex;gap:8px}
+.palette-dots i{width:10px;height:10px;border-radius:50%;background:#d7ac67;box-shadow:0 0 0 1px #d1c2aa}
+.palette-dots i:nth-child(2){background:#7f98b2}.palette-dots i:nth-child(3){background:#b7c6d8}.palette-dots i:nth-child(4){background:#e8d9bf}
+.feature-tags{position:absolute;right:11%;bottom:17%;display:flex;flex-direction:column;gap:8px}
+.feature-tags span{padding:5px 10px;border-radius:999px;background:#fff9f2cc;border:1px solid #d8c7ab;font-size:.7rem;color:#536476;user-select:none}
+
+.prompt-chip{padding:6px 10px;font-size:.72rem;color:#445467;background:#fffdf8d9;border-color:#d9cdbf;box-shadow:0 8px 16px rgba(70,70,60,.09)}
+.trails path{stroke:#9eb4ca;stroke-width:1.05;stroke-dasharray:4 8}
+.glyph-dot{fill:#d3a75f}
+.center-glow{width:300px;height:300px;background:radial-gradient(circle,#eccf9e6e 0%,#8eafd05a 40%,transparent 74%);mix-blend-mode:screen}
+
+.slider-ui{padding:18px 4px 4px;position:relative}
+.stage-markers{position:relative;height:16px;margin:0 24px}
+.stage-markers span{position:absolute;top:2px;width:7px;height:7px;border-radius:50%;background:#b6aaa0;opacity:.5;transform:translateX(-50%);transition:all .3s ease}
+.stage-markers span.active{top:0;width:12px;height:12px;background:linear-gradient(135deg,#cfab6e,#88a3c0);opacity:1;box-shadow:0 0 0 4px #d8c4a63b,0 0 12px #98afc06c}
+.stage-words{display:flex;justify-content:space-between;color:#716b62;padding:0 24px 8px}
+.stage-words small{font-size:.78rem;opacity:.8}
+.slider-track-fill{position:absolute;left:6px;right:auto;bottom:14px;height:12px;border-radius:999px;background:linear-gradient(90deg,#edd9bb,#b7cbdf);opacity:.35;pointer-events:none;transition:width .25s ease}
+.slider-input{width:100%;appearance:none;background:transparent;cursor:grab}
+.slider-input.dragging{cursor:grabbing}
+.slider-input::-webkit-slider-runnable-track{height:12px;border-radius:999px;background:linear-gradient(90deg,#f3e8d4,#deebf8);border:1px solid #d9cec1}
+.slider-input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;margin-top:-9px;width:30px;height:30px;border-radius:50%;border:1px solid #b7c6d8;background:radial-gradient(circle at 30% 30%,#fff,#d8e6f5);box-shadow:0 8px 18px rgba(93,107,126,.3);transition:transform .18s ease,box-shadow .18s ease}
+.slider-input.dragging::-webkit-slider-thumb{transform:scale(1.08);box-shadow:0 12px 22px rgba(93,107,126,.38)}
