@@ -1,20 +1,46 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Mos Growth Archive
 
-# Run and deploy your AI Studio app
+A light-mode portfolio and growth-work archive focused on practical SEO, GEO, analytics, and B2B website optimization projects for Mos / Gajes-related work.
 
-This contains everything you need to run your app locally.
+## Project Purpose
 
-View your app in AI Studio: https://ai.studio/apps/eb1063d0-0a3c-4bad-be44-d0ca57e28f05
+This site presents a professional project archive for:
+- SEO/GEO reporting workflows
+- Google Search Console API integration
+- GA4 integration and reporting
+- B2B manufacturing website optimization
+- Growth intelligence roadmap modules
 
-## Run Locally
+## Tech Stack
 
-**Prerequisites:**  Node.js
+- React + TypeScript
+- Vite
 
+## Local Setup
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+   ```bash
+   npm install
+   ```
+2. Start development server:
+   ```bash
+   npm run dev
+   ```
+3. Build production output:
+   ```bash
+   npm run build
+   ```
+4. Preview production build:
+   ```bash
+   npm run preview
+   ```
+
+## Deployment (Vercel)
+
+This project is Vite-based and deploys directly on Vercel.
+
+- Framework preset: **Vite**
+- Build command: `npm run build`
+- Output directory: `dist`
+
+No dark mode variants are included in this project.
