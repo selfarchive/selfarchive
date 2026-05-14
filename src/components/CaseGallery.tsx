@@ -1,8 +1,9 @@
+import { motion } from 'motion/react';
 import { useMemo, useState } from 'react';
 import { CaseCard } from './CaseCard';
 import type { CaseCategory, CaseItem } from './types';
 
-const filters: ('Show All' | CaseCategory)[] = ['Show All', 'SEO/GEO', 'Research', 'Visuals', 'UI', 'Reporting'];
+const filters: ('Show All' | CaseCategory)[] = ['Show All', 'SEO/GEO', 'Research', 'Visuals', 'UI', 'Reporting', 'Outreach'];
 
 export function CaseGallery({ cases, onOpenCase }: { cases: CaseItem[]; onOpenCase: (id: string) => void }) {
   const [filter, setFilter] = useState<(typeof filters)[number]>('Show All');
@@ -10,8 +11,10 @@ export function CaseGallery({ cases, onOpenCase }: { cases: CaseItem[]; onOpenCa
 
   return <section className="section">
     <h2>Selected Case Studies</h2>
-    <p className="sub">Visual case studies covering SEO/GEO tools, market research workflows, product visuals, and website UI optimization.</p>
-    <div className="pills">{filters.map((f) => <button key={f} className={f === filter ? 'active' : ''} onClick={() => setFilter(f)}>{f}</button>)}</div>
+    <p className="sub">Selected visual cases built around research, optimization, visual production, and web improvement.</p>
+    <div className="pills">{filters.map((f) => <motion.button key={f} className={f === filter ? 'active' : ''} onClick={() => setFilter(f)} whileHover={{ y: -2 }} whileTap={{ y: 1, scale: 0.98 }} transition={{ duration: 0.2, ease: 'easeOut' }}>
+      {f}
+    </motion.button>)}</div>
     <div className="gallery">{filtered.map((item) => <CaseCard key={item.id} item={item} onOpen={onOpenCase} />)}</div>
   </section>;
 }
