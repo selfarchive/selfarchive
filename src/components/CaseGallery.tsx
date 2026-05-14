@@ -15,6 +15,6 @@ export function CaseGallery({ cases, onOpenCase }: { cases: CaseItem[]; onOpenCa
     <div className="pills">{filters.map((f) => <motion.button key={f} className={f === filter ? 'active' : ''} onClick={() => setFilter(f)} whileHover={{ y: -2 }} whileTap={{ y: 1, scale: 0.98 }} transition={{ duration: 0.2, ease: 'easeOut' }}>
       {f}
     </motion.button>)}</div>
-    <div className="gallery">{filtered.map((item) => <CaseCard key={item.id} item={item} onOpen={onOpenCase} />)}</div>
+    <div className="gallery">{filtered.map((item) => <CaseCard key={item.id} item={item} onOpen={onOpenCase} caseNumber={cases.findIndex((c) => c.id === item.id) + 1} />)}</div>
   </section>;
 }
