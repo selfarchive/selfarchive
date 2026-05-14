@@ -14,26 +14,39 @@ const prompts: PromptChip[] = [
   { text: '高信任度视觉风格', startX: 240, startY: 120, endX: -10, endY: 16, delayStart: 38, orbitRange: 12, rotation: 7 }
 ];
 
+const BEFORE_IMAGE_PATH = '/cases/product-visuals/before-product.png';
+const AFTER_IMAGE_PATH = '/cases/product-visuals/final-poster.png';
+
 const clamp = (n: number, min = 0, max = 1) => Math.max(min, Math.min(max, n));
 
 export function RefinementSlider() {
   const [progress, setProgress] = useState(0);
+  const [beforeLoadError, setBeforeLoadError] = useState(false);
+  const [afterLoadError, setAfterLoadError] = useState(false);
   const showPromptStart = 18;
   const absorptionStart = 35;
   const absorptionEnd = 78;
-  const phase = progress < 45 ? '原图' : progress < 90 ? '视觉重构' : '成品海报';
+  const phase = progress < 18 ? '原图' : progress < 90 ? '视觉重构' : '成品海报';
   const marker = useMemo(() => [0, 50, 100], []);
 
   const visibleProgress = clamp((progress - showPromptStart) / 18);
   const compositionProgress = clamp((progress - absorptionStart) / 35);
-  const finalPosterProgress = clamp((progress - 70) / 24);
+  const finalPosterProgress = clamp((progress - 90) / 10);
 
   return <section className="section"><h2>Refinement</h2><div className="refine-wrap"><div className="stage-label">阶段：{phase}</div><div className="slider-scene">
-    <div className="poster before"><div className="photo" /><span>原图</span></div>
+    <div className="poster before">
+      <img src={BEFORE_IMAGE_PATH} alt="原图产品" className="poster-image" onError={() => setBeforeLoadError(true)} onLoad={() => setBeforeLoadError(false)} />
+      {beforeLoadError ? <small className="image-error">图片加载失败：{BEFORE_IMAGE_PATH}</small> : null}
+      <span>原图</span>
+    </div>
     <div className="reconstruct-layer" style={{ opacity: compositionProgress }}><div className="layout-grid" /><div className="headline" /><div className="feature-chips" /><div className="product-focus" /></div>
-    <div className="poster after" style={{ opacity: finalPosterProgress }}><div className="layout-grid" /><div className="headline" /><div className="chips" /><div className="cta-pill">Campaign Ready</div><span>成品海报</span></div>
+    <div className="poster after" style={{ opacity: finalPosterProgress }}>
+      <img src={AFTER_IMAGE_PATH} alt="成品海报" className="poster-image" onError={() => setAfterLoadError(true)} onLoad={() => setAfterLoadError(false)} />
+      {afterLoadError ? <small className="image-error">图片加载失败：{AFTER_IMAGE_PATH}</small> : null}
+      <span>成品海报</span>
+    </div>
     <div className="center-glow" style={{ opacity: clamp((progress - absorptionStart) / 40) }} />
-    <svg className="trails" viewBox="0 0 1000 420">
+    <svg className="trails" viewBox="0 0 1000 420" style={{ opacity: progress < showPromptStart ? 0 : 1 }}>
       {prompts.map((p, i) => {
         const absorbProgress = clamp((progress - p.delayStart) / 40);
         const pathOpacity = progress < showPromptStart ? 0 : visibleProgress * clamp((absorbProgress - 0.05) * 2.4) * (1 - absorbProgress) * (progress < absorptionEnd ? 1 : clamp((100 - progress) / 20));
