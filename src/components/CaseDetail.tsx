@@ -1,6 +1,7 @@
 import type { CaseItem } from './types';
 import { RefinementSlider } from './RefinementSlider';
 import { ProductVisualCarousel } from './ProductVisualCarousel';
+import { UIDesignCaseDetail } from './UIDesignCaseDetail';
 
 const productPosterImages = [
   { src: '/cases/product-visuals/poster-dress.png', title: 'Floral Slip Dress Campaign', category: 'Fashion' },
@@ -10,6 +11,8 @@ const productPosterImages = [
 ];
 
 export function CaseDetail({ item, onBack }: { item: CaseItem; onBack: () => void }) {
+  if (item.id === 'ui-optimization') return <UIDesignCaseDetail onBack={onBack} />;
+
   return <section className="section"><button className="btn" onClick={onBack}>← Back to Cases</button>
     <article className="detail"><div><small>{item.category}</small><h2>{item.title}</h2><p>{item.brief}</p><h4>Problem</h4><p>{item.problem}</p><h4>Process</h4><p>{item.process}</p><h4>Output</h4><p>{item.output}</p><div className="tags">{item.tools.map((t) => <span key={t}>{t}</span>)}</div></div>
     {item.id === 'promo-visual' ? <ProductVisualCarousel images={productPosterImages} /> : <div className={`detail-visual ${item.visualType}`} />}</article>
