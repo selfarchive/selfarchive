@@ -26,7 +26,7 @@ function App() {
   const nav: [string, View][] = [['Home', 'home'], ['Cases', 'cases'], ['Workflow', 'workflow'], ['Refinement', 'refinement'], ['Profile', 'profile'], ['Contact', 'contact']];
 
   return <main className="site"><nav className="nav"><strong>Mos Digital Archive</strong><div>{nav.map(([n, v]) => <button key={n} className={view === v ? 'is-active' : ''} onClick={() => setView(v)}>{n}</button>)}</div></nav>
-    {view === 'home' ? <Hero onViewCases={() => setView('cases')} onContact={() => setView('contact')} /> : null}
+    {view === 'home' ? <Hero onViewCases={() => setView('cases')} /> : null}
     {view === 'cases' ? <CaseGallery cases={cases} onOpenCase={(id) => { setSelectedId(id); setView('caseDetail'); }} /> : null}
     {view === 'caseDetail' ? <CaseDetail item={selected} onBack={() => setView('cases')} /> : null}
     {view === 'workflow' ? <Workflow /> : null}

@@ -268,3 +268,28 @@ h2{font-family:Georgia,serif;font-size:clamp(1.8rem,3.2vw,2.6rem);line-height:1.
   .home-intro-actions{left:30px;bottom:28px}
   .workflow-strip{grid-template-columns:1fr}
 }
+
+/* Home cinematic intro restoration */
+.home-intro{margin-top:14px;min-height:100vh;padding:34px;border:1px solid #2d3138;border-radius:28px;background:radial-gradient(circle at 50% 20%,#1f232b 0%,#0b0d11 46%,#050608 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#f4f2ee;isolation:isolate}
+.intro-vignette{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,transparent 36%,#00000084 100%)}
+.intro-noise{position:absolute;inset:0;opacity:.2;background-image:radial-gradient(#ffffff1c 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:screen;animation:grain 1.8s steps(6) infinite}
+.intro-particles{position:absolute;inset:-16%;background:radial-gradient(circle at 20% 44%,#d1af7f2e 0%,transparent 42%),radial-gradient(circle at 84% 24%,#94aac034 0%,transparent 46%)}
+.intro-bloom{position:absolute;left:50%;top:42%;width:560px;height:560px;transform:translate(-50%,-50%);background:radial-gradient(circle,#e4c79d24 0%,#9db2c824 34%,transparent 70%)}
+.intro-depth-scene{position:absolute;inset:0;perspective:1550px;transform-style:preserve-3d}
+.intro-panel{position:absolute;left:50%;top:50%;width:260px;height:174px;margin:-87px 0 0 -130px;padding:12px;border-radius:18px;border:1px solid #ffffff25;background:linear-gradient(160deg,#f6f4efea,#d8d1c5d8);box-shadow:0 24px 38px #0006;transform-style:preserve-3d;backdrop-filter:blur(3px)}
+.intro-panel small{font-size:.72rem;color:#273241;font-weight:700;letter-spacing:.04em}
+.intro-panel-visuals{margin-top:10px;height:124px;border-radius:12px;border:1px solid #7f8a97;background:#fff}
+.intro-panel-seo .intro-panel-visuals{background:linear-gradient(180deg,#f7fbff 0 55%,#e9f0f8 55% 100%),repeating-linear-gradient(180deg,#6f7f9030 0 10px,transparent 10px 14px)}
+.intro-panel-research .intro-panel-visuals{background:linear-gradient(145deg,#faf2e3,#f1e6d0)}
+.intro-panel-visual .intro-panel-visuals{background:linear-gradient(135deg,#eff2f8,#e7dcc9)}
+.intro-panel-ui .intro-panel-visuals{background:linear-gradient(160deg,#ecf3fa,#f4f6f8)}
+.intro-panel-reporting .intro-panel-visuals{background:linear-gradient(145deg,#e7edf6,#ece1ce)}
+.intro-panel-outreach .intro-panel-visuals{background:linear-gradient(145deg,#f2f3f5,#e8dfd2)}
+.home-intro-copy{position:relative;z-index:2;text-align:center;max-width:860px}
+.home-intro-copy h1{font-family:Georgia,serif;font-size:clamp(2.3rem,6vw,5.2rem);line-height:1.03;letter-spacing:-.03em;color:#f3f1ec;margin:0 0 18px;text-shadow:0 0 22px rgba(244,238,226,.18)}
+.home-intro-copy p{margin:0 auto;color:#c8c3ba;font-size:1rem;letter-spacing:.01em;max-width:62ch}
+.home-index{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:0;margin:18px 0 0;list-style:none}
+.home-index li{padding:6px 12px;border:1px solid #d6cab85a;border-radius:999px;font-size:.78rem;color:#ddd5ca;background:#ffffff10}
+.home-intro-actions{position:absolute;z-index:3;left:50%;transform:translateX(-50%);bottom:62px;display:flex;gap:10px}
+.home-intro .btn.primary{background:#c3a16f;color:#15171b;border-color:#d1b07f}
+.home-intro .btn{background:#f6f0e6;color:#161b22;border-color:#cbb08a}

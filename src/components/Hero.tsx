@@ -1,7 +1,7 @@
 import { HomeIntro } from './HomeIntro';
 
-type Props = { onViewCases: () => void; onContact: () => void };
+type Props = { onViewCases: () => void };
 
-export function Hero({ onViewCases, onContact }: Props) {
-  return <HomeIntro onViewCases={onViewCases} onContact={onContact} />;
+export function Hero({ onViewCases }: Props) {
+  return <HomeIntro onViewCases={onViewCases} />;
 }
