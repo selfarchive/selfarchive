@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useEffect, useMemo, useState } from 'react';
 
 type Props = { onViewCases: () => void };
@@ -6,33 +6,37 @@ type Props = { onViewCases: () => void };
 type Panel = { label: string; className: string; x: string; y: string; rz: number; rx: number; delay: number; z: number };
 
 const PANELS: Panel[] = [
-  { label: 'SEO/GEO', className: 'intro-panel-seo', x: '-30%', y: '-24%', rz: -12, rx: 6, delay: 0.62, z: -520 },
-  { label: 'Market Research', className: 'intro-panel-research', x: '26%', y: '-18%', rz: 10, rx: -5, delay: 0.78, z: -620 },
-  { label: 'Product Visuals', className: 'intro-panel-visual', x: '-24%', y: '18%', rz: 8, rx: -4, delay: 0.94, z: -700 },
-  { label: 'UI Design', className: 'intro-panel-ui', x: '14%', y: '20%', rz: -9, rx: 5, delay: 1.06, z: -560 },
-  { label: 'Reporting', className: 'intro-panel-reporting', x: '-4%', y: '-4%', rz: 6, rx: -3, delay: 1.2, z: -760 },
-  { label: 'Outreach', className: 'intro-panel-outreach', x: '34%', y: '10%', rz: -6, rx: 4, delay: 1.3, z: -680 }
+  { label: 'SEO/GEO', className: 'intro-panel-seo', x: '-28%', y: '-20%', rz: -10, rx: 4, delay: 0.12, z: -460 },
+  { label: 'Market Research', className: 'intro-panel-research', x: '26%', y: '-16%', rz: 9, rx: -4, delay: 0.22, z: -520 },
+  { label: 'Product Visuals', className: 'intro-panel-visual', x: '-20%', y: '18%', rz: 8, rx: -3, delay: 0.32, z: -560 },
+  { label: 'UI Design', className: 'intro-panel-ui', x: '16%', y: '20%', rz: -8, rx: 4, delay: 0.42, z: -500 }
 ];
 
 export function HomeIntro({ onViewCases }: Props) {
+  const prefersReducedMotion = useReducedMotion();
   const [runId, setRunId] = useState(0);
-  const [showFinal, setShowFinal] = useState(false);
-  const [showActions, setShowActions] = useState(false);
+  const [showFinal, setShowFinal] = useState(prefersReducedMotion);
+  const [showActions, setShowActions] = useState(prefersReducedMotion);
 
   useEffect(() => {
-    const t1 = window.setTimeout(() => setShowFinal(true), 3300);
-    const t2 = window.setTimeout(() => setShowActions(true), 4200);
+    if (prefersReducedMotion) {
+      setShowFinal(true);
+      setShowActions(true);
+      return;
+    }
+    const t1 = window.setTimeout(() => setShowFinal(true), 1800);
+    const t2 = window.setTimeout(() => setShowActions(true), 2450);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
     };
-  }, [runId]);
+  }, [runId, prefersReducedMotion]);
 
   const words = useMemo(() => ['Mos', 'Digital', 'Archive', 'is', 'here.'], []);
   const replayIntro = () => {
     setRunId((n) => n + 1);
-    setShowFinal(false);
-    setShowActions(false);
+    setShowFinal(prefersReducedMotion);
+    setShowActions(prefersReducedMotion);
   };
 
   return (
@@ -47,18 +51,16 @@ export function HomeIntro({ onViewCases }: Props) {
           <motion.div
             key={`${runId}-${panel.label}`}
             className={`intro-panel ${panel.className}`}
-            initial={{ opacity: 0, filter: 'blur(10px)', transform: `translate3d(${panel.x}, ${panel.y}, ${panel.z}px) rotateX(${panel.rx}deg) rotateY(${panel.rz / 2}deg) rotateZ(${panel.rz}deg) scale(0.72)` }}
+            initial={{ opacity: 0, transform: `translate3d(${panel.x}, ${panel.y}, ${panel.z}px) rotateX(${panel.rx}deg) rotateY(${panel.rz / 2}deg) rotateZ(${panel.rz}deg) scale(0.8)` }}
             animate={{
-              opacity: [0, 0.86, 0.86, 0],
-              filter: ['blur(10px)', 'blur(2px)', 'blur(4px)', 'blur(12px)'],
+              opacity: [0, 0.95, 0],
               transform: [
-                `translate3d(${panel.x}, ${panel.y}, ${panel.z}px) rotateX(${panel.rx}deg) rotateY(${panel.rz / 2}deg) rotateZ(${panel.rz}deg) scale(0.72)`,
-                `translate3d(${panel.x}, ${panel.y}, 56px) rotateX(${panel.rx - 3}deg) rotateY(${panel.rz / 2}deg) rotateZ(${panel.rz}deg) scale(1)`,
-                'translate3d(0, 0, 120px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.84)',
-                'translate3d(0, 0, 20px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.25)'
+                `translate3d(${panel.x}, ${panel.y}, ${panel.z}px) rotateX(${panel.rx}deg) rotateY(${panel.rz / 2}deg) rotateZ(${panel.rz}deg) scale(0.8)`,
+                `translate3d(${panel.x}, ${panel.y}, 40px) rotateX(${panel.rx - 2}deg) rotateY(${panel.rz / 2}deg) rotateZ(${panel.rz}deg) scale(1)`,
+                'translate3d(0, 0, 40px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.72)'
               ]
             }}
-            transition={{ duration: 2.5, delay: panel.delay, ease: [0.22, 1, 0.36, 1], times: [0, 0.42, 0.78, 1] }}
+            transition={{ duration: 1.06, delay: panel.delay, ease: [0.22, 1, 0.36, 1], times: [0, 0.65, 1] }}
           >
             <small>{panel.label}</small>
             <div className="intro-panel-visuals" />
@@ -68,8 +70,8 @@ export function HomeIntro({ onViewCases }: Props) {
 
       <AnimatePresence>
         {showFinal ? (
-          <motion.div className="home-intro-copy" initial={{ opacity: 0, y: 14, filter: 'blur(6px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}>
-            <motion.h1 initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}>
+          <motion.div className="home-intro-copy" initial={{ opacity: 0, y: 14, filter: 'blur(5px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
+            <motion.h1 initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}>
               {words.map((word) => (
                 <motion.span key={word} variants={{ hidden: { opacity: 0, y: 22, filter: 'blur(5px)' }, show: { opacity: 1, y: 0, filter: 'blur(0px)' } }}>
                   {word}&nbsp;
