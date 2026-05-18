@@ -29,8 +29,7 @@ const galleryItems: GalleryItem[] = [
     title: 'Mobile Responsive Layout',
     description: 'Responsive UI adaptation across desktop and mobile layouts.',
     src: '/cases/ui-optimization/gif-mobile-responsive.gif',
-    badge: 'Mobile',
-    pending: true
+    badge: 'Mobile'
   },
   {
     title: 'CTA Path Highlight',
@@ -65,6 +64,8 @@ const principles = [
 ];
 
 function GalleryCard({ item, featured = false }: { item: GalleryItem; featured?: boolean }) {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <motion.article
       className={`ui-gallery-card ${featured ? 'featured' : ''}`}
@@ -75,14 +76,14 @@ function GalleryCard({ item, featured = false }: { item: GalleryItem; featured?:
       whileHover={{ y: -4, boxShadow: '0 24px 32px rgba(42,36,24,.12)' }}
     >
       <div className="ui-gallery-media-wrap">
-        {!item.pending ? (
+        {!item.pending && !imageError ? (
           <>
             <img className="ui-gallery-media ui-gallery-blur" src={item.src} alt="" aria-hidden="true" />
-            <motion.img className="ui-gallery-media ui-gallery-main" src={item.src} alt={item.title} whileHover={{ scale: 1.03 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }} />
+            <motion.img className="ui-gallery-media ui-gallery-main" src={item.src} alt={item.title} whileHover={{ scale: 1.03 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }} onError={() => setImageError(true)} />
           </>
         ) : (
           <div className="ui-gallery-pending">
-            <p>GIF pending</p>
+            <p>{item.pending ? 'GIF pending' : 'GIF unavailable'}</p>
           </div>
         )}
       </div>
