@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 
-const chips = ['Interface System', 'Responsive Layout', 'CTA Flow', 'Motion Detail', 'Case Presentation'];
+const chips = ['Interface System', 'Responsive Layout', 'CTA Flow', 'Motion Detail', 'Archive Narrative'];
 
 type GalleryItem = {
   title: string;
@@ -106,9 +106,9 @@ export function UIDesignCaseDetail({ onBack }: { onBack: () => void }) {
 
       <article className="ui-hero-card">
         <div className="ui-hero-copy">
-          <small className="eyebrow">UI / UX CASE STUDY</small>
+          <small className="eyebrow">MOS DIGITAL ARCHIVE · UI CASE</small>
           <h2>Website UI Design &amp; Optimization</h2>
-          <p>Interface experiments focused on hierarchy, responsive structure, CTA clarity, and smoother case presentation.</p>
+          <p>A high-contrast, editorial interface refinement for Mos Digital Archive focused on hierarchy, responsive structure, and conversion clarity.</p>
           <div className="tags">{chips.map((chip) => <span key={chip}>{chip}</span>)}</div>
         </div>
         <div className="ui-hero-media">
@@ -121,13 +121,13 @@ export function UIDesignCaseDetail({ onBack }: { onBack: () => void }) {
       </article>
 
       <section className="ui-statement-grid">
-        <h3>Designed for clarity, motion, and reuse.</h3>
+        <h3>Built for clarity, pace, and archive continuity.</h3>
         <div>
-          <p>This case collects interface experiments that improve how digital work is presented: opening motion, card interaction, mobile adaptation, CTA direction, and before/after layout refinement.</p>
+          <p>This case compiles interaction refinements that improve how work is explored in the Mos Digital Archive: opening motion, card behavior, mobile adaptation, CTA direction, and before/after layout evolution.</p>
           <dl>
             <div><dt>Focus</dt><dd>Case-study UI</dd></div>
             <div><dt>Output</dt><dd>Motion gallery</dd></div>
-            <div><dt>Format</dt><dd>GIF-based interaction archive</dd></div>
+            <div><dt>Format</dt><dd>GIF-based archive narrative</dd></div>
           </dl>
         </div>
       </section>
