@@ -119,7 +119,11 @@ export function UIDesignCaseDetail({ onBack }: { onBack: () => void }) {
       </article>
 
       <section className="ui-gallery-section">
-        <h3>Interface Motion Gallery</h3>
+        <div className="ui-section-head">
+          <small className="eyebrow">Case Media</small>
+          <h3>Interface Motion Gallery</h3>
+          <p>Core interface studies from this case, preserving the original archive media and sequencing it with clearer presentation rhythm.</p>
+        </div>
         <div className="ui-gallery-grid">
           <GalleryCard item={galleryItems[0]} featured />
           <div className="ui-gallery-subgrid">{galleryItems.slice(1).map((item) => <GalleryCard item={item} />)}</div>
@@ -127,7 +131,10 @@ export function UIDesignCaseDetail({ onBack }: { onBack: () => void }) {
       </section>
 
       <section>
-        <h3>Optimization Process</h3>
+        <div className="ui-section-head">
+          <small className="eyebrow">Method</small>
+          <h3>Optimization Process</h3>
+        </div>
         <div className="ui-process-grid">{processSteps.map(([num, title, desc]) => (
           <article key={num} className="ui-process-step">
             <small>{num}</small>
@@ -138,7 +145,10 @@ export function UIDesignCaseDetail({ onBack }: { onBack: () => void }) {
       </section>
 
       <section>
-        <h3>Design Principles</h3>
+        <div className="ui-section-head">
+          <small className="eyebrow">System</small>
+          <h3>Design Principles</h3>
+        </div>
         <div className="ui-principle-grid">{principles.map((item) => (
           <article key={item} className="ui-principle-card">{item}</article>
         ))}</div>
